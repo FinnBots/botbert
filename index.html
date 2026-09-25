@@ -1005,7 +1005,13 @@ if(!HEADLESS){
   function drawBot(){
     const b=s.bot;
     if(s.st==='die' && s.bubble<=DIE_MS-620) return;              /* the bot pops out after the bubble */
-    const p=botPos(), sz=31;
+    /* ARCADE PARITY (researched 2026-09-25): Gottlieb's Q*bert hardware draws 8x8 background
+       tiles and 16x16 SPRITES — Q*bert and every enemy are the same size, on a cube roughly
+       twice the sprite's width. Our cube is TW=38 and the cast is drawn 18x20 (~0.5 of a
+       cube, correct); only the hero's PNG path was inflated to 31 (~0.8 of a cube). The
+       engine's own no-PNG fallback right below already uses 18x20, which is the giveaway.
+       The y-anchor is a multiple of sz, so his feet stay on the cube at any size. */
+    const p=botPos(), sz=20;
     ctx.beginPath(); ctx.ellipse(p.x, p.y+3, 11, 4, 0, 0, Math.PI*2);
     ctx.fillStyle='rgba(0,0,0,'+(p.air?0.22:0.4)+')'; ctx.fill();
     ctx.save(); ctx.translate(p.x, p.y-sz*0.52);
