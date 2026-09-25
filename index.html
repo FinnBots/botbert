@@ -532,7 +532,7 @@ canvas{ touch-action:none; }
 "use strict";
 /* ==========================================================================
    BOTBERT — FinnBots.  ENGINE (Free gameplay).
-   Q*bert-loop (Gottlieb, 1982): hop a bot diagonally across a 28-cube pyramid
+   cube-flip loop (1982): hop a bot diagonally across a 28-cube pyramid
    and flip every cube to the target colour while dodging the drop-in hazards.
    ▓ Toy cloned 100% (mechanics / scoring / feel, researched to the numbers);
    ▓ IP cloned 0% — original FinnBots cast, palette, name; Bot 106 is the hero.
@@ -1005,8 +1005,8 @@ if(!HEADLESS){
   function drawBot(){
     const b=s.bot;
     if(s.st==='die' && s.bubble<=DIE_MS-620) return;              /* the bot pops out after the bubble */
-    /* ARCADE PARITY (researched 2026-09-25): Gottlieb's Q*bert hardware draws 8x8 background
-       tiles and 16x16 SPRITES — Q*bert and every enemy are the same size, on a cube roughly
+    /* ARCADE PARITY (researched 2026-09-25): the 1982 cube-flip board draws 8x8 background
+       tiles and 16x16 SPRITES — the cube-flip original and every enemy are the same size, on a cube roughly
        twice the sprite's width. Our cube is TW=38 and the cast is drawn 18x20 (~0.5 of a
        cube, correct); only the hero's PNG path was inflated to 31 (~0.8 of a cube). The
        engine's own no-PNG fallback right below already uses 18x20, which is the giveaway.
