@@ -1379,7 +1379,7 @@ if(!HEADLESS){
     }
 
     // ---- score memo (CUBE — no seed, no move-log, no replay; records NOT verified) ----
-    function buildScoreMemo(res){ return MEMO_TAG+'|score|sig='+String(entrySig).slice(0,32)+'|score='+res.score+'|level='+res.level+'|round='+res.round+'|cubes='+res.cubes+'|time='+res.timeMs; }
+    function buildScoreMemo(res){ return MEMO_TAG+'|score|sig='+String(entrySig).slice(0,32)+'|score='+res.score+'|level='+res.level+'|round='+res.round+'|cubes='+res.cubes+'|time='+Math.round(res.timeMs); }
 
     // ---- flow glue (Bot Smash: single-run action game) ---------------------
     function relabelStart(){
